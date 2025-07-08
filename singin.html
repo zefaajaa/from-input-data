@@ -1,0 +1,65 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Form Input Data dengan Foto
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+ </head>
+ <body class="bg-white flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-xs border border-black rounded-2xl p-6" style="font-family: Arial, sans-serif;">
+   <h1 class="text-center text-black text-lg mb-4 select-none" style="font-weight: 400;">
+    masukan Foto
+   </h1>
+   <div class="flex justify-center mb-6">
+    <label class="cursor-pointer w-14 h-14 rounded-full border border-black flex items-center justify-center overflow-hidden" for="photoInput">
+     <img alt="Circle user icon with a heart on top" class="w-full h-full object-cover" height="60" id="photoPreview" src="https://storage.googleapis.com/a1aa/image/f3a9227f-2319-4d0f-d8ef-752f542168cb.jpg" width="60"/>
+    </label>
+    <input accept="image/*" class="hidden" id="photoInput" type="file"/>
+   </div>
+   <p class="text-black text-center mb-4 select-none" style="font-weight: 400; font-size: 1rem;">
+    isi data diri
+   </p>
+   <form class="space-y-4" onsubmit="event.preventDefault(); alert('Form submitted!');">
+    <div>
+     <label class="block text-black text-sm mb-1 select-none" for="name" style="font-weight: 400;">
+      nama
+     </label>
+     <input class="w-full border border-black rounded-md px-3 py-2 text-black text-base" id="name" required="" style="font-weight: 400;" type="text"/>
+    </div>
+    <div>
+     <label class="block text-black text-sm mb-1 select-none" for="hobi" style="font-weight: 400;">
+      Hobi
+     </label>
+     <input class="w-full border border-black rounded-md px-3 py-2 text-black text-base" id="hobi" required="" style="font-weight: 400;" type="text"/>
+    </div>
+    <div>
+     <label class="block text-black text-sm mb-1 select-none" for="email" style="font-weight: 400;">
+      Email
+     </label>
+     <input class="w-full border border-black rounded-md px-3 py-2 text-black text-base" id="email" required="" style="font-weight: 400;" type="email"/>
+    </div>
+    <button class="w-full bg-black text-white py-2 rounded-md mt-4 font-normal" type="submit">
+     Submit
+    </button>
+   </form>
+  </div>
+  <script>
+   const photoInput = document.getElementById('photoInput');
+    const photoPreview = document.getElementById('photoPreview');
+
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          photoPreview.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+ </body>
+</html>
